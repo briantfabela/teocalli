@@ -11,6 +11,11 @@ class archeologist:
         # inventory dictionary -> {'gold': 13, 'silver': 32, 'rope': 2}
         self.inventory = {}
 
+        # current 
+        self.site_history = [] # ('site': score)
+        
+        self.current_site = ''
+
     def loot(self):
         '''Generate a dict of loot items based on location and player skills'''
 
@@ -34,10 +39,19 @@ class archeologist:
 
         return inventory
 
+    def enter_site(self):
+        '''enter new temple'''
+        pass
+
+    def leave_site(self):
+        '''leave temple, add total loot to inventory'''
+        pass
+
 class site:
 
     def __init__(self, name=''):
-        
+        '''lorem ipsum'''
+
         if not name:
             self.name = self.site_name_gen()
         else:
