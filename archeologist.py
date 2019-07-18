@@ -23,14 +23,6 @@ class archeologist:
 
         self.addToInventory(loot_droped, self.inventory) # add loot to player
 
-    def countLoot(self, loot):
-        '''Generate a dictionary from loot collected. {'item': amount}'''
-
-        # consider generating object instances with rarity and value attributes
-        # for each loot item. See: Class inheritance for possible way of doing
-
-        pass
-
     def addToInventory(self, loot, inventory):
         '''Take a loot dictionary and add its items to inventory dict'''
 
@@ -42,12 +34,29 @@ class archeologist:
 
         return inventory
 
-def site_name_gen():
-    '''Name generation from two words'''
+class site:
 
-    # 12 x 27 = 324 unique combinations
-    pre = 'Maza/Mixi/Mequi/Tla/Tepi/Zaca/Xoqui/Xi/Ana/Eli/Chico/Chipo'
-    post= 'can/che/kun/pan/tuk/que/kal/pak/tza/tan/tecal/huaca/co/zingo/yuca/'\
-           'pali/yotl/chiqui/catl/huani/coatl/latl/lolco/matl/tatl/huapa/tl'
+    def __init__(self, name=''):
+        
+        if not name:
+            self.name = self.site_name_gen()
+        else:
+            self.name = name
 
-    return choice(pre.split('/')) + choice(post.split('/'))
+        self.risk = {}
+        self.total_loot_collected = {} # total loot
+
+        # legenday artifact TODO: add way to aquire legend artifact, make class
+        self.legend_art = '' # generate a name 'golden jaguar of {self.name}'
+        self.legend_art_rarity = randint(0, 5)
+        self.legend_art_collect = False # has the item been aquired by player?
+
+    def site_name_gen(self):
+        '''Name generation from two words'''
+
+        # 12 x 27 = 324 unique combinations
+        pre = 'Maza/Mixi/Mequi/Tla/Tepi/Zaca/Xoqui/Xi/Ana/Eli/Chico/Chipo'
+        post= 'can/che/kun/pan/tuk/que/kal/pak/tza/tan/tecal/huaca/co/zingo/yuca/'\
+            'pali/yotl/chiqui/catl/huani/coatl/latl/lolco/matl/tatl/huapa/tl'
+
+        return choice(pre.split('/')) + choice(post.split('/'))
