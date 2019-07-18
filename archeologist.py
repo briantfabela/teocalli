@@ -14,14 +14,14 @@ class archeologist:
     def loot(self):
         '''Generate a dict of loot items based on location and player skills'''
 
-        loot = {}
-        materials = ['gold', 'silver', 'jade', 'obsidian']
+        loot_droped = {}
+        materials = ['gold', 'silver', 'jade', 'obsidian', 'turquoise']
+        # add amethyst, pearls, emerald <- rarer but not necessarily more val
 
-        for i in range(randint(1, 3)):
-            self.addToInventory( dict(choice(materials)] = randint(1, 5)), loot)
+        for i in range(randint(1, 3)): # generate a total inventory for loot
+            self.addToInventory({choice(materials):randint(1, 5)}, loot_droped)
 
-        return loot
-
+        self.addToInventory(loot_droped, self.inventory) # add loot to player
 
     def countLoot(self, loot):
         '''Generate a dictionary from loot collected. {'item': amount}'''
