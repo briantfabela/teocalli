@@ -5,8 +5,9 @@ class Archeologist:
 
     def __init__(self, name):
         self.name = name
-        self.hp = 100
-        self.xp = 0
+        self.base_hp = 100 # base hp a player has when starting site
+        self.hp = 100 # Tracks ongoing 'current' hp. Always > 0.
+        self.xp = 0 # total xp earned by the player
 
         # inventory dictionary -> {'gold': 13, 'silver': 32, 'rope': 2}
         self.inventory = {}
@@ -24,17 +25,57 @@ class Archeologist:
         materials = ['gold', 'silver', 'jade', 'obsidian', 'turquoise']
         # add amethyst, pearls, emerald <- rarer but not necessarily more val
 
-        for i in range(randint(1, 3)): # generate a total inventory for loot
+        for _ in range(randint(1, 3)): # generate a total inventory for loot
             self.addToInventory({choice(materials):randint(1, 5)}, loot_droped)
 
         # add loot_dropped to site.site_loot
         self.addToInventory(loot_droped, self.current_site.site_loot)
 
-        # TODO: consider triggering an 'Event' isntance with its unique events
+        # TODO: consider triggering an 'Event' instance with its unique events
+
         # aquire xp
-        # loose some hp
-        # print loot() events to console
+        xp_drop = randint(1, 5)
+        # TODO: make the probability dependant on a player skill
+        if random() > 0.85 :
+            xp_drop += randint(5, 10)
+
+        self.current_site.xp_earned += xp_drop
+        self.xp += xp_drop
+
+        # loose some hp; based on risk
+        hp_loss = 0
+        if random() * 100 <= self.current_site.risk:
+            max_dmg = 2 + self.current_site.risk //  10 # 2 - risk // 10
+            hp_loss += round(randint(1, max_dmg) * (1 + self.current_site.risk))
+            self.hp -= hp_loss
+        
+        # increase site risk
+        risk_gain = 0
+        if random() < 0.6: # consider skill that reduces likelyhood of increase
+            risk_gain += randint(1, 5) # cosnider skill that mitigates max gain
+            self.current_site.risk += risk_gain
+
+        # generate a chance to aquire the site's legendary loot
+        if not self.current_site.legend_art_collect: # if not yet collected
+            if random() <= 0.95: # make a player's skill affect this prob
+                # print artifact discovery event to console
+                print("You found ", self.current_site.legend_artif.name_full)
+                self.addToInventory(self.current_site.legend_artif.name_full:1,
+                                    loot_droped)
+
+        # print loot() events to console: risk, hp, total risk, total hp, etc
+        event_str = ''
+        if hp_loss and risk_gain:
+            event_str += f"Risk: +{risk_gain}%, -{hp_loss} HP"
+        elif risk_gain:
+            event_str += f"Risk: +{risk_gain}%"
+        elif hp_loss:
+            event_str += f"-{hp_loss} HP"
+        
+        # continue string
         # end fuicntion
+        
+    # TODO: Consider adding medkits, torches, antidotes, and ropes to the game
 
     def addToInventory(self, loot, inventory):
         '''Take a loot dictionary and add its items to inventory dict'''
@@ -51,7 +92,8 @@ class Archeologist:
         '''enter new temple'''
 
         # generate a site instance and assign it to self.current_site
-        pass
+
+        return Site()
 
     def leave_site(self):
         '''leave temple, add total loot to inventory'''
@@ -72,12 +114,10 @@ class Site:
         else:
             self.name = name
 
-        self.risk = 0
-        self.total_loot_collected = {} # total loot
+        self.risk = 0 # higher risk = more likely to loose hp, more hp loss
 
-        # legenday artifact TODO: add way to aquire legend artifact, make class
-        self.legend_art = '' # generate a name 'golden jaguar of {self.name}'
-        self.legend_art_rarity = randint(0, 5)
+        # legenday artifact of the Site; unique to location
+        self.legend_artif = Artifact(self.name) # generate unique artif to site
         self.legend_art_collect = False # has the item been aquired by player?
 
         # player attributes while in the site
@@ -90,22 +130,24 @@ class Site:
         # 12 x 27 = 324 unique combinations
         pre = 'Maza/Mixi/Mequi/Tla/Tepi/Zaca/Xoqui/Xi/Ana/Eli/Chico/Chipo'
         post= 'can/che/kun/pan/tuk/que/kal/pak/tza/tan/tecal/huaca/co/zingo/yuca/'\
-            'pali/yotl/chiqui/catl/huani/coatl/latl/lolco/matl/tatl/huapa/tl'
+              'pali/yotl/chiqui/catl/huani/coatl/latl/lolco/matl/tatl/huapa/tl'
 
         return choice(pre.split('/')) + choice(post.split('/'))
 
 class Artifact:
     '''Artifact unique to the site visited'''
 
-    def __init__(self, site_name=''):
+    def __init__(self, site_name='', pre_adjective = False):
+
         self.name = 'The '
 
-        if random() > 0.65:
+        if random() > 0.65 or pre_adjective:
             # assign an adjective describing appearance or attitude eg 'Angry'
+            # if pre_adjective is True, this will be added despite random()
             words = 'Ugly/Weird/Great/Fat/Old/Young/Shiny/Bright/Bloody/'\
                     'Adorable/Fragile/Crazy/Loco/Crooked/Terrible/Cruel/'\
                     'Magestic/Hissing/Little/Round/Screaming/Hunched/Tiny/'\
-                    'Ancient/Brittle'
+                    'Ancient/Brittle/Phalic'
 
             self.name += choice(words.split('/')) + ' ' # add word to name
         
@@ -118,19 +160,23 @@ class Artifact:
                 'Plates/Teen/Virgin/Duck/Quetzal/Serpent/Eagle/Jaguar/Men/'\
                 'Priest/Priests/Sun/Moon/Calendar/Quetzalcoatl/Tlaloc/Acan/'\
                 'God/Itzamna/Shaman/Xolo/Mixocoatl/Patecatl/Tlatoani/Star/'\
-                'Huitzilopoxtli/Cocoa/Bean/Baby/Lady Xoc/Ahau/Ajaw/Pakal'
+                'Huitzilopoxtli/Cocoa/Bean/Baby/Lady Xoc/Ahau/Ajaw/Pakal/'\
+                'Tablet/Stelae/Mother/Mothers/Sister/Sisters/Lady/Warrior'
 
         self.name += choice(nouns.split('/'))
-        self.name_full = self.name + ' of ' + site_name
+
+        if site_name: # if site name was given
+            self.name_full = self.name + ' of ' + site_name
 
         self.rarity = self.get_ratity()
 
     def get_ratity(self):
-
+        '''Assigns rarity value to an artifact'''
         rarity_list = [] # we will append rarities here and choose() them
 
-        rarity_list.extend(['uncommon'] * 40) # % 80
-        rarity_list.extend(['rare'] * 9)      # % 18
-        rarity_list.extend(['legendary'])     # % 2
+        # TODO: consider making the probabilities modifyable via func parameter
+        rarity_list.extend(['Uncommon'] * 40) # % 80
+        rarity_list.extend(['Rare'] * 9)      # % 18
+        rarity_list.extend(['Legendary'])     # % 2
 
         return choice(rarity_list)
