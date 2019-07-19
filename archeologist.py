@@ -119,7 +119,7 @@ class Archeologist:
         '''Leave temple, add total loot to inventory'''
 
         # add site inventory to player's inventory -> (self.inventory)
-        self.addToInventory(self.current_site, self.inventory)
+        self.addToInventory(self.current_site.site_loot, self.inventory)
 
         # reset self.hp to self.base_hp
         self.hp = self.base_hp
