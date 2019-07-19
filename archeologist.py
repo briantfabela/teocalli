@@ -26,7 +26,7 @@ class Archeologist:
         # add amethyst, pearls, emerald <- rarer but not necessarily more val
 
         for _ in range(randint(1, 3)): # generate a total inventory for loot
-            self.addToInventory({choice(materials):randint(1, 5)}, loot_droped)
+            self.addToInventory({choice(materials):randint(1, 3)}, loot_droped)
 
         # TODO: consider triggering an 'Event' instance with its unique events
 
@@ -109,15 +109,30 @@ class Archeologist:
         '''enter new temple'''
 
         # generate a site instance and assign it to self.current_site
-        return Site()
+        new_site = Site()
+        print(f"Welcome to {new_site.name}!\n")
+        return new_site
 
     def leave_site(self):
         '''leave temple, add total loot to inventory'''
 
-        # add site inventory to self.inventory
-        # reset self.hp
+        # add site inventory to player's inventory -> (self.inventory)
+        self.addToInventory(self.current_site, self.inventory)
+
+        # reset self.hp to self.base_hp
+        self.hp = self.base_hp
+
         # print total loot aquired at site, xp gained
-        # print current inventory
+        print(f"Loot Collected at {self.current_site.name}:\n")
+        for item, amount in self.current_site.site_loot.items():
+            f"\t{item}: {amount}\n"
+
+        # print total current inventory
+        print(f"Total Player Loot:\n")
+        for item, amount in self.inventory.items():
+            f"\t{item}: {amount}\n"
+
+        # enter a new site
         self.enter_site()
 
 class Site:
