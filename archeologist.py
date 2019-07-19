@@ -128,17 +128,19 @@ class Archeologist:
         # print total loot aquired at site, xp gained
         print(f"Loot Collected at {self.current_site.name}:\n")
         for item, amount in self.current_site.site_loot.items():
-            print(f"\t{item}: {amount}\n")
+            print(f"\t{item}: {amount}")
+        print('\n')
 
         # print total current inventory
         print(f"Total Player Loot:\n")
         for item, amount in self.inventory.items():
-            print(f"\t{item}: {amount}\n")
+            print(f"\t{item}: {amount}")
+        print('\n')
 
         # TODO: add site exited to self.site_history -> ('site': <Site>)
 
         # enter a new site
-        self.enter_site()
+        self.current_site = self.enter_site()
 
 class Site:
 
