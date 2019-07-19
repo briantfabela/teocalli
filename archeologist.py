@@ -91,7 +91,7 @@ class Archeologist:
         for item, amount in loot_droped.items():
             event_str += f"\t{item}: {amount}\n"
 
-        # end fuicntion
+        # end function
         print(event_str)
         
     # TODO: Consider adding medkits, torches, antidotes, and ropes to the game
@@ -113,6 +113,7 @@ class Archeologist:
         # generate a site instance and assign it to self.current_site
         new_site = Site()
         print(f"Welcome to {new_site.name}!\n")
+
         return new_site
 
     def leave_site(self):
@@ -127,12 +128,12 @@ class Archeologist:
         # print total loot aquired at site, xp gained
         print(f"Loot Collected at {self.current_site.name}:\n")
         for item, amount in self.current_site.site_loot.items():
-            f"\t{item}: {amount}\n"
+            print(f"\t{item}: {amount}\n")
 
         # print total current inventory
         print(f"Total Player Loot:\n")
         for item, amount in self.inventory.items():
-            f"\t{item}: {amount}\n"
+            print(f"\t{item}: {amount}\n")
 
         # TODO: add site exited to self.site_history -> ('site': <Site>)
 
