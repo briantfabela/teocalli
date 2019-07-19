@@ -28,9 +28,6 @@ class Archeologist:
         for _ in range(randint(1, 3)): # generate a total inventory for loot
             self.addToInventory({choice(materials):randint(1, 5)}, loot_droped)
 
-        # add loot_dropped to site.site_loot
-        self.addToInventory(loot_droped, self.current_site.site_loot)
-
         # TODO: consider triggering an 'Event' instance with its unique events
 
         # aquire xp
@@ -57,11 +54,15 @@ class Archeologist:
 
         # generate a chance to aquire the site's legendary loot
         if not self.current_site.legend_art_collect: # if not yet collected
-            if random() <= 0.95: # make a player's skill affect this prob
+            if random() >= 0.95: # make a player's skill affect this prob
                 # print artifact discovery event to console
-                print("You found", self.current_site.legend_artif.name_full)
+                print(f"You found {self.current_site.legend_artif.name_full}!")
                 self.addToInventory({self.current_site.legend_artif.name : 1},
                                     loot_droped)
+                self.current_site.legend_art_collect = True
+
+        # add all collected loot thus far to self.current_site.site_loot
+        self.addToInventory(loot_droped, self.current_site.site_loot)
 
         # print loot() events to console: risk, hp, total risk, total hp, etc
         # TODO: make this its own function
@@ -85,7 +86,7 @@ class Archeologist:
         # rest of string's lines: Loot dropped
         event_str += "Loot:\n"
         for item, amount in loot_droped.items():
-            event_str += f"{item}: {amount}\n"
+            event_str += f"\t{item}: {amount}\n"
 
         # end fuicntion
         print(event_str)
