@@ -100,16 +100,16 @@ class Artifact:
     def __init__(self, site_name=''):
         self.name = 'The '
 
-        if random() > 0.5:
+        if random() > 0.65:
             # assign an adjective describing appearance or attitude eg 'Angry'
             words = 'Ugly/Weird/Great/Fat/Old/Young/Shiny/Bright/Bloody/'\
-                    'Adorable/Fragile/Crazy/Loco/Crooked/Terrible/Cruel'\
-                    'Magestic/Hissing/Little/Round/Screaming/Hunched/Tiny'\
+                    'Adorable/Fragile/Crazy/Loco/Crooked/Terrible/Cruel/'\
+                    'Magestic/Hissing/Little/Round/Screaming/Hunched/Tiny/'\
                     'Ancient/Brittle'
 
             self.name += choice(words.split('/')) + ' ' # add word to name
         
-        adjectives = 'Golden/Yellow/Gold/Silver/Gray/Crystal/Red/Green/Blue'\
+        adjectives = 'Golden/Yellow/Gold/Silver/Gray/Crystal/Red/Green/Blue/'\
                      'Black/White/Gray/Jade/Obsidian/Turquoise/Clay/Rock/Stone'
 
         self.name += choice(adjectives.split('/')) + ' ' # add adjective
@@ -121,3 +121,16 @@ class Artifact:
                 'Huitzilopoxtli/Cocoa/Bean/Baby/Lady Xoc/Ahau/Ajaw/Pakal'
 
         self.name += choice(nouns.split('/'))
+        self.name_full = self.name + ' of ' + site_name
+
+        self.rarity = self.get_ratity()
+
+    def get_ratity(self):
+
+        rarity_list = [] # we will append rarities here and choose() them
+
+        rarity_list.extend(['uncommon'] * 40) # % 80
+        rarity_list.extend(['rare'] * 9)      # % 18
+        rarity_list.extend(['legendary'])     # % 2
+
+        return choice(rarity_list)
