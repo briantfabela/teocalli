@@ -43,9 +43,10 @@ class Archeologist:
         hp_loss = 0
         if random() * 100 <= self.current_site.risk:
             max_dmg = 2 + self.current_site.risk //  10 # 2 - risk // 10
-            hp_loss += round(randint(1, max_dmg) * (1 + self.current_site.risk))
+            hp_loss += round(randint(1, max_dmg) * 
+                       (1 + self.current_site.risk / 100))
             self.hp -= hp_loss
-        
+
         # increase site risk
         risk_gain = 0
         if random() < 0.6: # consider skill that reduces likelyhood of increase
@@ -76,10 +77,10 @@ class Archeologist:
         elif hp_loss:
             event_str += f"-{hp_loss} HP" # hp loss
 
-        if len(event_str): event_str+=" " # if the string has no xp or hp stats
+        if len(event_str): event_str+=", " # if the string has no xp or hp stats
         event_str += f"+{xp_drop} XP\n" # add xp gain
 
-        # 2nd Line: Total Risk & total HP LOSS
+        # 2nd Line: Total Risk & total HP loss
         event_str += f"Total Risk: {self.current_site.risk}%, HP: {self.hp}, "\
                      f"Site XP: {self.current_site.xp_earned}\n"
 
