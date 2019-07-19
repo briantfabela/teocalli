@@ -59,21 +59,36 @@ class Archeologist:
         if not self.current_site.legend_art_collect: # if not yet collected
             if random() <= 0.95: # make a player's skill affect this prob
                 # print artifact discovery event to console
-                print("You found ", self.current_site.legend_artif.name_full)
-                self.addToInventory(self.current_site.legend_artif.name_full:1,
+                print("You found", self.current_site.legend_artif.name_full)
+                self.addToInventory({self.current_site.legend_artif.name : 1},
                                     loot_droped)
 
         # print loot() events to console: risk, hp, total risk, total hp, etc
+        # TODO: make this its own function
         event_str = ''
+
+        # 1st Line: Risk Gain and/or HP Loss and XP gain
         if hp_loss and risk_gain:
             event_str += f"Risk: +{risk_gain}%, -{hp_loss} HP"
         elif risk_gain:
-            event_str += f"Risk: +{risk_gain}%"
+            event_str += f"Risk: +{risk_gain}%" # xp gain
         elif hp_loss:
-            event_str += f"-{hp_loss} HP"
-        
-        # continue string
+            event_str += f"-{hp_loss} HP" # hp loss
+
+        if len(event_str): event_str+=" " # if the string has no xp or hp stats
+        event_str += f"+{xp_drop} XP\n" # add xp gain
+
+        # 2nd Line: Total Risk & total HP LOSS
+        event_str += f"Total Risk: {self.current_site.risk}%, HP: {self.hp}, "\
+                     f"Site XP: {self.current_site.xp_earned}\n"
+
+        # rest of string's lines: Loot dropped
+        event_str += "Loot:\n"
+        for item, amount in loot_droped.items():
+            event_str += f"{item}: {amount}\n"
+
         # end fuicntion
+        print(event_str)
         
     # TODO: Consider adding medkits, torches, antidotes, and ropes to the game
 
@@ -92,7 +107,6 @@ class Archeologist:
         '''enter new temple'''
 
         # generate a site instance and assign it to self.current_site
-
         return Site()
 
     def leave_site(self):
