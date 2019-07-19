@@ -58,6 +58,8 @@ class Archeologist:
             if random() >= 0.95: # make a player's skill affect this prob
                 # print artifact discovery event to console
                 print(f"You found {self.current_site.legend_artif.name_full}!")
+                print(f"This is a *{self.current_site.legend_artif.rarity}* "\
+                       "item")
                 self.addToInventory({self.current_site.legend_artif.name : 1},
                                     loot_droped)
                 self.current_site.legend_art_collect = True
@@ -71,9 +73,9 @@ class Archeologist:
 
         # 1st Line: Risk Gain and/or HP Loss and XP gain
         if hp_loss and risk_gain:
-            event_str += f"Risk: +{risk_gain}%, -{hp_loss} HP"
+            event_str += f"+{risk_gain}% risk, -{hp_loss} HP"
         elif risk_gain:
-            event_str += f"Risk: +{risk_gain}%" # xp gain
+            event_str += f"+{risk_gain}% risk" # xp gain
         elif hp_loss:
             event_str += f"-{hp_loss} HP" # hp loss
 
@@ -114,7 +116,7 @@ class Archeologist:
         return new_site
 
     def leave_site(self):
-        '''leave temple, add total loot to inventory'''
+        '''Leave temple, add total loot to inventory'''
 
         # add site inventory to player's inventory -> (self.inventory)
         self.addToInventory(self.current_site, self.inventory)
@@ -131,6 +133,8 @@ class Archeologist:
         print(f"Total Player Loot:\n")
         for item, amount in self.inventory.items():
             f"\t{item}: {amount}\n"
+
+        # TODO: add site exited to self.site_history -> ('site': <Site>)
 
         # enter a new site
         self.enter_site()
@@ -206,7 +210,7 @@ class Artifact:
         rarity_list = [] # we will append rarities here and choose() them
 
         # TODO: consider making the probabilities modifyable via func parameter
-        rarity_list.extend(['Uncommon'] * 40) # % 80
+        rarity_list.extend(['Noteworthy'] * 40) # % 80
         rarity_list.extend(['Rare'] * 9)      # % 18
         rarity_list.extend(['Legendary'])     # % 2
 
