@@ -13,7 +13,7 @@ class Archeologist:
         self.inventory = {}
 
         # history of sites visited along with loot collected there
-        self.site_history = [] # ('site': <Site>)
+        self.site_history = [] # (site.name: <Site>)
         
         # enter first site
         self.current_site = self.enter_site() # new site
