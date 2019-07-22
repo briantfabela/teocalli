@@ -67,9 +67,13 @@ class Archeologist:
         # add all collected loot thus far to self.current_site.site_loot
         self.addToInventory(loot_droped, self.current_site.site_loot)
 
-        # print loot() events to console: risk, hp, total risk, total hp, etc
-        # TODO: make this its own function
-        event_str = ''
+        self.loot_print(risk_gain, hp_loss, xp_drop, loot_droped)
+
+    # TODO: Consider adding medkits, torches, antidotes, and ropes to the game
+
+    def loot_print(self, risk_gain, hp_loss, xp_drop, loot_droped):
+        '''Print self.loot() events to console'''
+        event_str = '' # stores the string to be printed. For concatenation.
 
         # 1st Line: Risk Gain and/or HP Loss and XP gain
         if hp_loss and risk_gain:
@@ -93,8 +97,6 @@ class Archeologist:
 
         # end function
         print(event_str)
-        
-    # TODO: Consider adding medkits, torches, antidotes, and ropes to the game
 
     def addToInventory(self, loot, inventory):
         '''Take a loot dictionary and add its items to inventory dict'''
@@ -127,17 +129,18 @@ class Archeologist:
 
         # print total loot aquired at site, xp gained
         print(f"Loot Collected at {self.current_site.name}:\n")
-        for item, amount in self.current_site.site_loot.items():
+        for item, amount in sorted(self.current_site.site_loot.items()):
             print(f"\t{item}: {amount}")
         print('\n')
 
         # print total current inventory
         print(f"Total Player Loot:\n")
-        for item, amount in self.inventory.items():
+        for item, amount in sorted(self.inventory.items()):
             print(f"\t{item}: {amount}")
         print('\n')
 
-        # TODO: add site exited to self.site_history -> ('site': <Site>)
+        # add site exited to self.site_history -> ('site': <Site>)
+        self.site_history.append((self.current_site.name, self.current_site))
 
         # enter a new site
         self.current_site = self.enter_site()
