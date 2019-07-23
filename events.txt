@@ -1,0 +1,53 @@
+### HELP ###
+
+    This text file contain instances of events within their specific sections
+    For Example, Random style events without major significance are contained
+    within the ### RANDOM EVENTS ### Section. Here Python will choose a Random
+    line to pick the text for the event. Some kewords may determine gains or 
+    losses in hp, xp, loot, etc. But generally these will be random. The text
+    is meant to provide a more flavorful playing experience with more context
+    for events. All events are in past tense: e.g. "You died", "You found..."
+
+    Other types of events will exist under different section names. Sections are
+    meant to help facilitate Python in finding the text needed. In the future if 
+    this project retains my interest I may decide to store events and event text
+    in JSON format or an SQL table. Whatever is faster and more maintainable, and
+    more friendly if anyone wishes to write out more events for the game.
+
+    Here is the general structure for sections:
+
+    ### SECTION NAME ###
+
+    Event text 1
+    Event text 2
+    Event text 3
+
+    ### SECTION NAME ###
+
+    RANDOM EVENTS: Will always yield at least one type of loot, all else random.
+    HURT EVENTS: Will loose a little bit of hp. May gain a little xp, but nothing else.
+
+    written: 7/23/2019
+
+### HELP ###
+
+### RANDOM EVENTS ###
+
+
+
+### RANDOM EVENTS ###
+
+### HURT EVENTS ###
+
+You missed your step and triped over.
+You tripped on a rock and hurt your shin.
+A small rock fell on your head. 
+You stubbed your toe on a rock.
+You stepped over a rock and it caved in causing you to fall.
+You missjudged height while jumping down a small ledge and you fell a little too hard!
+You bit your tounge while having a snack.
+You hurt your wrist while carrying a rock out of the way.
+You scraped your knees while making your way through a narrow pass.
+You caught your hand in a wall cavity while looking for loot.
+
+### HURT EVENTS ###
