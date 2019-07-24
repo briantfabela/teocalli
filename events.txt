@@ -1,14 +1,12 @@
 ### HELP ###
 
     This text file contain instances of events within their specific sections
-    For Example, Random style events without major significance are contained
-    within the ### RANDOM EVENTS ### Section. Here Python will choose a Random
-    line to pick the text for the event. Some kewords may determine gains or 
-    losses in hp, xp, loot, etc. But generally these will be random. The text
-    is meant to provide a more flavorful playing experience with more context
-    for events. All events are in past tense: e.g. "You died", "You found..."
-    All events are a maximum of 90 characters in length to better accomodate
-    formatting in the console.
+    Here Python will choose a Random line to pick the text for the event.
+    Some kewords may determine gains or losses in hp, xp, loot, etc. But generally
+    these will be random. The text is meant to provide a more flavorful playing 
+    experience with more context for events. All events are in past tense: 
+    e.g. "You died", "You found..." All events are a maximum of 90 characters in
+    length to better accomodate formatting in the console.
 
     Other types of events will exist under different section names. Sections are
     meant to help facilitate Python in finding the text needed. In the future if 
@@ -26,21 +24,16 @@
 
         ### SECTION NAME ###
 
-    RANDOM EVENTS: Will always yield at least one type of loot, all else random.
     HURT EVENTS: Will loose a little bit of hp. May gain a little xp, but nothing else.
     BOOBY TRAPS: Events with significant HP loss. May gain a little xp, nothing else.
     XP EVENTS: Events that yield some (more than regular) xp and nothing else.
-    RISK EVENTS: Events that increase the risk of the site significantly.
+    RISK EVENTS: Events that increase the risk of the site significantly. Nothing else.
+    LOOT EVENTS: Events that yield significant loot and a little xp. Nothing more.
+    BIG LOOT EVENTS: Events that yield large amounts of loot. Nothing more.
 
     written: 7/23/2019
 
 ### HELP ###
-
-### RANDOM EVENTS ###
-
-
-
-### RANDOM EVENTS ###
 
 ### HURT EVENTS ###
 
@@ -57,6 +50,7 @@ You hurt your arm while shoving a boulder out of the way.
 You scraped your knees while making your way through a narrow pass.
 You cut your hand while looking for loot in a wall cavity.
 While going down a slope you misstepped and hurt your ankle.
+You fall and hit your head. You are out cold for some time.
 
 ### HURT EVENTS ###
 
@@ -86,3 +80,18 @@ You hear the walls around you crack and rumble a little, making you uneasy.
 As you walk you hear quite cackling-like noises around the corners. Are you going crazy?
 
 ### RISK EVENTS ###
+
+### LOOT EVENTS ###
+
+You found a small stash of offerings!
+While examining a small broken vase, it brittles away revealing the valuables inside.
+
+### LOOT EVENTS ###
+
+### BIG LOOT EVENTS ###
+
+While looking through rubble you find a small entrance to a room. It is filled with loot.
+You fall exhausted after some exertion. Upon looking up, you find a large offering base.
+You find a large amount of offerings under a large overturned piece of masonry.
+
+### BIG LOOT EVENTS ###
