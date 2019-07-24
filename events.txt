@@ -7,6 +7,8 @@
     losses in hp, xp, loot, etc. But generally these will be random. The text
     is meant to provide a more flavorful playing experience with more context
     for events. All events are in past tense: e.g. "You died", "You found..."
+    All events are a maximum of 90 characters in length to better accomodate
+    formatting in the console.
 
     Other types of events will exist under different section names. Sections are
     meant to help facilitate Python in finding the text needed. In the future if 
@@ -16,16 +18,19 @@
 
     Here is the general structure for sections:
 
-    ### SECTION NAME ###
+        ### SECTION NAME ###
 
-    Event text 1
-    Event text 2
-    Event text 3
+        Event text 1
+        Event text 2
+        Event text 3
 
-    ### SECTION NAME ###
+        ### SECTION NAME ###
 
     RANDOM EVENTS: Will always yield at least one type of loot, all else random.
     HURT EVENTS: Will loose a little bit of hp. May gain a little xp, but nothing else.
+    BOOBY TRAPS: Events with significant HP loss. May gain a little xp, nothing else.
+    XP EVENTS: Events that yield some (more than regular) xp and nothing else.
+    RISK EVENTS: Events that increase the risk of the site significantly.
 
     written: 7/23/2019
 
@@ -39,15 +44,45 @@
 
 ### HURT EVENTS ###
 
-You missed your step and triped over.
+You missed your step and tripped over.
 You tripped on a rock and hurt your shin.
 A small rock fell on your head. 
 You stubbed your toe on a rock.
-You stepped over a rock and it caved in causing you to fall.
-You missjudged height while jumping down a small ledge and you fell a little too hard!
-You bit your tounge while having a snack.
+You stepped over rock and slipped.
+You misjudged the height while jumping down a ledge and you fell a little too hard!
+You bit your tongue while having a snack.
+You choked on your own saliva.
 You hurt your wrist while carrying a rock out of the way.
+You hurt your arm while shoving a boulder out of the way.
 You scraped your knees while making your way through a narrow pass.
-You caught your hand in a wall cavity while looking for loot.
+You cut your hand while looking for loot in a wall cavity.
+While going down a slope you misstepped and hurt your ankle.
 
 ### HURT EVENTS ###
+
+### BOOBY TRAPS ###
+
+While looking for loot you broke a large jar full of spiders.
+You stepped on a loose plate triggering a trap door. The trap failed but you got hurt.
+The tunnel you were in began to collapse. You made it out but got hit by several debris.
+A boulder drops the wall pushing down a hidden floor lever and hurling you into the air.
+You make a loud noise, causing a group of bats to storm out of a tunnel. You got bit.
+
+### BOOBY TRAPS ###
+
+### XP EVENTS ###
+
+You discover some glyphs and symbols you had never seen before.
+You find a small faded mural behind some debris. You sketch it for later study.
+You sit down for a moment and try to make some sense from the symbols on the walls.
+You sketch your location on a map and begin to better understand the site's layout.
+
+### XP EVENTS ###
+
+### RISK EVENTS ###
+
+You hear some loud rumbles coming from deep within the bowels of the site.
+You hear the walls around you crack and rumble a little, making you uneasy.
+As you walk you hear quite cackling-like noises around the corners. Are you going crazy?
+
+### RISK EVENTS ###
