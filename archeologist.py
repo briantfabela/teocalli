@@ -1,5 +1,6 @@
 from random import choice, randint, random
 import site
+import event
 
 class Archeologist:
     '''Archeologist contains name, hp, xp, inventory, current & visited site'''

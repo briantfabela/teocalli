@@ -37,6 +37,9 @@
 
 ### HURT EVENTS ###
 
+A rock rolled over your toes.
+A small rock fell on your shoulder.
+While climbing a rock, your grip gives and you fell on your butt.
 You missed your step and tripped over.
 You tripped on a rock and hurt your shin.
 A small rock fell on your head. 
@@ -56,7 +59,7 @@ You fall and hit your head. You are out cold for some time.
 
 ### BOOBY TRAPS ###
 
-While looking for loot you broke a large jar full of spiders.
+While looking for loot you accidentaly broke a large jar full of spiders.
 You stepped on a loose plate triggering a trap door. The trap failed but you got hurt.
 The tunnel you were in began to collapse. You made it out but got hit by several debris.
 A boulder drops the wall pushing down a hidden floor lever and hurling you into the air.
@@ -84,6 +87,10 @@ As you walk you hear quite cackling-like noises around the corners. Are you goin
 ### LOOT EVENTS ###
 
 You found a small stash of offerings!
+You found a stash of loot!
+You picked up some loot from in0between the rubble.
+While picking through rubble, you find some loot.
+Digging through some dirt and rubble you find some loot.
 While examining a small broken vase, it brittles away revealing the valuables inside.
 
 ### LOOT EVENTS ###
@@ -92,6 +99,6 @@ While examining a small broken vase, it brittles away revealing the valuables in
 
 While looking through rubble you find a small entrance to a room. It is filled with loot.
 You fall exhausted after some exertion. Upon looking up, you find a large offering base.
-You find a large amount of offerings under a large overturned piece of masonry.
+You found a large amount of offerings under a large overturned piece of masonry.
 
 ### BIG LOOT EVENTS ###
