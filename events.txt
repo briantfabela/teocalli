@@ -57,7 +57,7 @@ You fall and hit your head. You are out cold for some time.
 
 ### HURT EVENTS ###
 
-### BOOBY TRAPS ###
+### BOOBY TRAP EVENTS ###
 
 While looking for loot you accidentaly broke a large jar full of spiders.
 You stepped on a loose plate triggering a trap door. The trap failed but you got hurt.
@@ -65,7 +65,7 @@ The tunnel you were in began to collapse. You made it out but got hit by several
 A boulder drops the wall pushing down a hidden floor lever and hurling you into the air.
 You make a loud noise, causing a group of bats to storm out of a tunnel. You got bit.
 
-### BOOBY TRAPS ###
+### BOOBY TRAP EVENTS ###
 
 ### XP EVENTS ###
 

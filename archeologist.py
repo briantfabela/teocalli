@@ -33,6 +33,8 @@ class Archeologist:
 
         # TODO: consider triggering an 'Event' instance with its unique events
 
+        ### THIS AREA WILL BE REPLACES BY EVENETS ###
+        
         # aquire xp
         xp_drop = randint(1, 5)
         # TODO: make the probability dependant on a player skill
@@ -53,8 +55,10 @@ class Archeologist:
         # increase site risk
         risk_gain = 0
         if random() < 0.6: # consider skill that reduces likelyhood of increase
-            risk_gain += randint(1, 5) # cosnider skill that mitigates max gain
+            risk_gain += randint(1, 3) # cosnider skill that mitigates max gain
             self.current_site.risk += risk_gain
+
+        ### THIS AREA WILL BE REPLACES BY EVENETS ###
 
         # generate a chance to aquire the site's legendary loot
         if not self.current_site.legend_art_collect: # if not yet collected
