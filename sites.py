@@ -58,7 +58,8 @@ class Artifact:
                 'Priest/Priests/Sun/Moon/Calendar/Quetzalcoatl/Tlaloc/Acan/'\
                 'God/Itzamna/Shaman/Xolo/Mixocoatl/Patecatl/Tlatoani/Star/'\
                 'Huitzilopoxtli/Cocoa/Bean/Baby/Lady Xoc/Ahau/Ajaw/Pakal/'\
-                'Tablet/Stelae/Mother/Mothers/Sister/Sisters/Lady/Warrior'
+                'Tablet/Stelae/Mother/Mothers/Sister/Sisters/Lady/Warrior/'\
+                'Flower/Coyotl/Tamale/Cactus/Bird/Deity/Ruler'
 
         self.name += choice(nouns.split('/'))
 
