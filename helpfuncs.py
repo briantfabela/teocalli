@@ -15,14 +15,13 @@ def load_events_txt(txt_str, event_type):
     event_type = f"### {event_type} ###"
 
     events_str = txt_str.split(event_type)[1].split(event_type)[0].strip('\n')
-    
+
     return events_str
 
 def get_random_line(txt_str):
     '''Strips whitespace and extra line and returns a random line from str'''
-    
-    return choice(txt_str.split('\n'))
 
+    return choice(txt_str.split('\n'))
 
 def test():
     print(get_random_line(load_events_txt(load_txt('events.txt'), 'LOOT EVENTS')))
