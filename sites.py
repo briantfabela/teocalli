@@ -1,4 +1,5 @@
 from random import choice, random
+
 class Site:
 
     def __init__(self, name=''):
@@ -24,8 +25,9 @@ class Site:
 
         # 12 x 27 = 324 unique combinations
         pre = 'Maza/Mixi/Mequi/Tla/Tepi/Zaca/Xoqui/Xi/Ana/Eli/Chico/Chipo'
-        post= 'can/che/kun/pan/tuk/que/kal/pak/tza/tan/tecal/huaca/co/zingo/yuca/'\
-              'pali/yotl/chiqui/catl/huani/coatl/latl/lolco/matl/tatl/huapa/tl'
+        post= 'can/che/kun/pan/tuk/que/kal/pak/tza/tan/tecal/huaca/co/zingo/'\
+              'yuca/pali/yotl/chiqui/catl/huani/coatl/latl/lolco/matl/tatl/'\
+              'huapa/hualpa/tl'
 
         return choice(pre.split('/')) + choice(post.split('/'))
 
@@ -42,7 +44,7 @@ class Artifact:
             words = 'Ugly/Weird/Great/Fat/Old/Young/Shiny/Bright/Bloody/'\
                     'Adorable/Fragile/Crazy/Loco/Crooked/Terrible/Cruel/'\
                     'Magestic/Hissing/Little/Round/Screaming/Hunched/Tiny/'\
-                    'Ancient/Brittle/Phalic'
+                    'Ancient/Brittle/Phalic/Smiling/Weeping'
 
             self.name += choice(words.split('/')) + ' ' # add word to name
         
