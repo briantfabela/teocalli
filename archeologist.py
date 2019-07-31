@@ -1,6 +1,7 @@
 from random import choice, randint, random
-import site
+import sites
 import event
+import helpfuncs
 
 class Archeologist:
     '''Archeologist contains name, hp, xp, inventory, current & visited site'''
@@ -16,7 +17,7 @@ class Archeologist:
 
         # history of sites visited along with loot collected there
         self.site_history = [] # (site.name: <Site>)
-        
+
         # enter first site
         self.current_site = self.enter_site() # new site
 
@@ -115,7 +116,7 @@ class Archeologist:
         '''enter new temple'''
 
         # generate a site instance and assign it to self.current_site
-        new_site = site.Site()
+        new_site = sites.Site()
         print(f"Welcome to {new_site.name}!\n")
 
         return new_site

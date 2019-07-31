@@ -3,7 +3,7 @@ from random import choice
 def load_txt(file_name):
     '''Loads a text file and returns it as a string'''
 
-    f = open(file_name, 'r')
+    f = open(file_name, 'r') # read file
     text_str = f.read()
     f.close()
 
