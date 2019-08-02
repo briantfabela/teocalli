@@ -1,5 +1,7 @@
 from random import choice, choices
 
+# TEXT PROCESSING, RETRIEVAL FUNCS
+
 def load_txt(file_name):
     '''Loads a text file and returns it as a string'''
 
@@ -19,13 +21,19 @@ def load_events_txt(txt_str, event_type):
     return events_str
 
 def get_random_line(txt_str):
-    '''Strips whitespace and extra line and returns a random line from str'''
+    '''Returns a random line from str'''
 
     return choice(txt_str.split('\n'))
 
-# will test the above functions so that they are producing the expected output
-def test():
-    print(get_random_line(load_events_txt(load_txt('events.txt'), 'LOOT EVENTS')))
+def get_event_txt(event_type):
+    '''Provides a random event text given the event type'''
+
+    event_type_text = load_events_txt(load_txt('events.txt'), event_type)
+    
+    return get_random_line(event_type_text)
+
+# EVENT HELP FUNCS
+# TODO: assign the diffulty value to a new object type 'Settings'
 
 def choose_event_type(difficulty='normal'):
     '''Returns an Event type with weighted probabilities based on difficulty'''
@@ -33,13 +41,19 @@ def choose_event_type(difficulty='normal'):
     if difficulty is 'normal':
         # events order: loot, big loot, xp, risk, hurt, booby traps
         weight = [0.35, 0.1, 0.2, 0.15, 0.15, 0.05]
+    elif difficulty is 'hard':
+        weight = [0.25, 0.05, 0.2, 0.2, 0.2, 0.1]
 
     return choices(['LOOT', 'BIG LOOT', 'XP', 'RISK', 'HURT', 'BOOBY TRAP'],
                     weight)[0]
 
-def test2():
-    txt = load_txt('events.txt')
-    for i in range(20):
-        event_type = choose_event_type()
-        event_line = get_random_line(load_events_txt(txt, event_type))
-        print(f"{event_type}: {event_line}")
+def add_up_loot(new_loot, total_loot):
+    '''Combines and returns the items from two inventory dicts'''
+
+    for item, amount in new_loot.items():
+            if item not in total_loot: # if item is new
+                total_loot[item] = amount
+            else: # if item exists on both dicts
+                total_loot[item] += amount
+
+    return total_loot

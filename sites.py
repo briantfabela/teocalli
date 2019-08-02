@@ -44,7 +44,7 @@ class Artifact:
             words = 'Ugly/Weird/Great/Fat/Old/Young/Shiny/Bright/Bloody/'\
                     'Adorable/Fragile/Crazy/Loco/Crooked/Terrible/Cruel/'\
                     'Magestic/Hissing/Little/Round/Screaming/Hunched/Tiny/'\
-                    'Ancient/Brittle/Phalic/Smiling/Weeping'
+                    'Ancient/Brittle/Phalic/Smiling/Weeping/Royal'
 
             self.name += choice(words.split('/')) + ' ' # add word to name
         
