@@ -78,3 +78,13 @@ class Artifact:
         rarity_list.extend(['Legendary'])     # % 2
 
         return choice(rarity_list)
+
+    def print_found(self):
+        '''Print the artifact's name and rarity when found'''
+
+        print(f"You found {self.name_full}!\nThis is a *{self.rarity}* item")
+
+
+#print(f"You found {self.current_site.legend_artif.name_full}!")
+#print(f"This is a *{self.current_site.legend_artif.rarity}* "\
+#       "item")

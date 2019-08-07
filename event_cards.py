@@ -1,7 +1,7 @@
 from random import choice, randint, random
 from helpfuncs import choose_event_type, get_event_txt, add_up_loot
 
-class Event:
+class EventCard:
 
     def __init__(self, event_type='', txt='', xp=0, hp=0, risk=0, loot={}):
         '''Generates an eventgenerates and event with appropriate attributes'''
@@ -63,5 +63,3 @@ class Event:
 
         elif self.type is 'BOOBY TRAP':
             self.hp_change -= randint(6, 12)
-
-        # TODO: call an event card from Archeologist.loot() and process changes

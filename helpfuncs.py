@@ -47,13 +47,26 @@ def choose_event_type(difficulty='normal'):
     return choices(['LOOT', 'BIG LOOT', 'XP', 'RISK', 'HURT', 'BOOBY TRAP'],
                     weight)[0]
 
-def add_up_loot(new_loot, total_loot):
+# DICTIONARY INVENTORY MANAGEMENT
+
+def add_up_loot(loot, final_inventory):
     '''Combines and returns the items from two inventory dicts'''
 
-    for item, amount in new_loot.items():
-            if item not in total_loot: # if item is new
-                total_loot[item] = amount
+    for item, amount in loot.items():
+            if item not in final_inventory: # if item is new
+                final_inventory[item] = amount
             else: # if item exists on both dicts
-                total_loot[item] += amount
+                final_inventory[item] += amount
 
-    return total_loot
+    return final_inventory
+
+#    def addToInventory(self, loot, inventory):
+#        '''Take a loot dictionary and add its items to inventory dict'''
+#
+#        for item, amount in loot.items(): # for each item in loot dict
+#            if item not in inventory:
+#                inventory[item] = amount # inventory['item'] = n
+#            else: # if item in inventory
+#                inventory[item] += amount # add amount of loot to existing
+#
+#        return inventory
