@@ -88,7 +88,7 @@ As you walk you hear quite cackling-like noises around the corners. Are you goin
 
 You found a small stash of offerings!
 You found a stash of loot!
-You picked up some loot from in0between the rubble.
+You picked up some loot from in-between the rubble.
 While picking through rubble, you find some loot.
 Digging through some dirt and rubble you find some loot.
 While examining a small broken vase, it brittles away revealing the valuables inside.
